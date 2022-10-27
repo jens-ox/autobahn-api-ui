@@ -4,6 +4,8 @@ export const roadResources = [
   {
     label: "Roadworks",
     componentProps: {
+      listDisplayUrl: "/{roadId}/services/roadworks",
+      itemDisplayUrl: "/details/roadworks/{roadworkId}",
       getList: async (roadId: string) => {
         const response = await autobahnApiClient.listRoadworks({
           roadId,
@@ -18,6 +20,8 @@ export const roadResources = [
   {
     label: "Webcams",
     componentProps: {
+      listDisplayUrl: "/{roadId}/services/webcam",
+      itemDisplayUrl: "/details/webcam/{webcamId}",
       getList: async (roadId: string) => {
         const response = await autobahnApiClient.listWebcams({
           roadId,
@@ -32,6 +36,8 @@ export const roadResources = [
   {
     label: "Parking Lorries",
     componentProps: {
+      listDisplayUrl: "/{roadId}/services/parking_lorry",
+      itemDisplayUrl: "/details/parking_lorry/{lorryId}",
       getList: async (roadId: string) => {
         const response = await autobahnApiClient.listParkingLorries({
           roadId,
@@ -46,6 +52,8 @@ export const roadResources = [
   {
     label: "Warnings",
     componentProps: {
+      listDisplayUrl: "/{roadId}/services/warning",
+      itemDisplayUrl: "/details/warning/{warningId}",
       getList: async (roadId: string) => {
         const response = await autobahnApiClient.listWarnings({
           roadId,
@@ -60,6 +68,8 @@ export const roadResources = [
   {
     label: "Closures",
     componentProps: {
+      listDisplayUrl: "/{roadId}/services/closure",
+      itemDisplayUrl: "/details/closure/{closureId}",
       getList: async (roadId: string) => {
         const response = await autobahnApiClient.listClosures({
           roadId,
@@ -74,6 +84,8 @@ export const roadResources = [
   {
     label: "Charing Stations",
     componentProps: {
+      listDisplayUrl: "/{roadId}/services/electric_charging_station",
+      itemDisplayUrl: "/details/electric_charging_station/{stationId}",
       getList: async (roadId: string) => {
         const response = await autobahnApiClient.listChargingStations({
           roadId,

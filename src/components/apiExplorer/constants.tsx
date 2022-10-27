@@ -5,7 +5,7 @@ export type StepProps = RoadSelectorProps & RoadExplorerProps;
 
 export const steps = [
   {
-    label: "Select a road",
+    label: "Fetching roads",
     description:
       "The road is the base resource for the Autobahn API. Select one to explore what we can leran about a road.",
     renderComponent: (props: RoadSelectorProps) => <RoadSelector {...props} />,
@@ -17,3 +17,8 @@ export const steps = [
     renderComponent: (props: RoadExplorerProps) => <RoadExplorer {...props} />,
   },
 ];
+
+export const getText = () => ({
+  title: "Autobahn API Explorer",
+  description: "The Autobahn API is provided by https://bund.dev/",
+});

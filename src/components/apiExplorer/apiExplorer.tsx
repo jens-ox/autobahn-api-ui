@@ -1,75 +1,85 @@
 import React, { useState } from "react";
+import { useTheme } from "@mui/material";
 
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Unstable_Grid2";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
+import StepButton from "@mui/material/StepButton";
 import StepLabel from "@mui/material/StepLabel";
 import StepContent from "@mui/material/StepContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import { steps, StepProps } from "./constants";
+import { About } from "../about/about";
+import { RoadSelector } from "../roadSelector/roadSelector";
+import { RoadExplorer } from "../roadExplorer/roadExplorer";
+import { API_BASE_URL } from "../../apis/autobahn/constants";
 
 export function ApiExplorer() {
   const [selectedRoad, setSelectedRoad] = useState<string>();
   const [activeStep, setActiveStep] = React.useState(0);
 
+  const theme = useTheme();
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const sharedComponentProps: StepProps = {
-    setSelectedRoad,
-    handleNext,
-    roadId: selectedRoad,
-  };
-
   return (
-    <Box>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map((step, index) => (
-          <Step key={step.label}>
-            <StepLabel
-              optional={
-                index === 2 ? (
-                  <Typography variant="caption">Last step</Typography>
-                ) : null
-              }
-            >
-              {step.label}
-            </StepLabel>
-            <StepContent>
-              <>
-                <Typography>{step.description}</Typography>
+    <Box sx={{ margin: theme.spacing(4) }}>
+      <About />
 
-                {step.renderComponent(sharedComponentProps)}
+      <Stepper nonLinear activeStep={activeStep} orientation="vertical">
+        <Step key={0}>
+          <StepButton
+            color="inherit"
+            onClick={() => {
+              setSelectedRoad(undefined);
+              setActiveStep(0);
+            }}
+          >
+            {!selectedRoad && "Fetch all roads"}
+            {selectedRoad && `Selected road: ${selectedRoad}`}
+          </StepButton>
+          <StepContent>
+            <Grid container spacing={2} width="100%">
+              <Grid xs={6}>
+                <Typography>
+                  The road is the base resource for the Autobahn API. We can use
+                  the base url directly to fetch all available roads. Select a
+                  road to explore the API endpoints available for fetching data
+                  related to a road.
+                </Typography>
 
-                <Box sx={{ mb: 2 }}>
-                  <div>
-                    <Button
-                      variant="contained"
-                      onClick={handleNext}
-                      sx={{ mt: 1, mr: 1 }}
-                    >
-                      {index === steps.length - 1 ? "Finish" : "Continue"}
-                    </Button>
-                    <Button
-                      disabled={index === 0}
-                      onClick={handleBack}
-                      sx={{ mt: 1, mr: 1 }}
-                    >
-                      Back
-                    </Button>
-                  </div>
-                </Box>
-              </>
-            </StepContent>
-          </Step>
-        ))}
+                <br />
+
+                <Typography
+                  style={{
+                    fontFamily: "Courier Prime",
+                    whiteSpace: "pre-wrap",
+                  }}
+                >
+                  HTTP GET: {API_BASE_URL}
+                </Typography>
+
+                <RoadSelector
+                  {...{
+                    setSelectedRoad,
+                    handleNext,
+                    roadId: selectedRoad,
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </StepContent>
+        </Step>
+
+        <Step key={1}>
+          <StepLabel>Fetching resources related to a road</StepLabel>
+          <StepContent>
+            {selectedRoad && <RoadExplorer roadId={selectedRoad} />}
+          </StepContent>
+        </Step>
       </Stepper>
     </Box>
   );

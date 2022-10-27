@@ -9,7 +9,7 @@ import Tab from "@mui/material/Tab";
 
 import { autobahnApiClient } from "../../apis/autobahn/client";
 import { Roads } from "../../apis/autobahn/generated";
-import { JsonViewer } from "../jsonViewer/jsonViewer";
+import { JsonViewer } from "../codeElements/jsonViewer";
 
 export type RoadSelectorProps = {
   setSelectedRoad: (road: string) => void;
@@ -52,12 +52,12 @@ export function RoadSelector(props: RoadSelectorProps) {
         onChange={(_, index) => setListViewTabIndex(index)}
         aria-label="basic tabs example"
       >
-        <Tab label="Resources" />
+        <Tab label="Roads" />
         <Tab label="Raw Response" />
       </Tabs>
 
       {listViewTabIndex === 0 && (
-        <List sx={{ maxHeight: 300, overflow: "auto" }}>
+        <List sx={{ maxHeight: 500, overflow: "auto" }}>
           {roads?.roads?.map((road, index) => (
             <ListItemButton
               key={index}

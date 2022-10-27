@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 
-import "@fontsource/courier-prime";
 import CircularProgress from "@mui/material/CircularProgress";
-
-import { JsonViewer } from "../jsonViewer/jsonViewer";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import { JsonViewer } from "../codeElements/jsonViewer";
 
 interface Resource {
   identifier?: string;
@@ -20,6 +20,7 @@ export function ItemView(props: ItemViewProps) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [resource, setResource] = useState<Resource>();
+  const [itemViewTabIndex, setItemViewTabIndex] = useState(0);
 
   const getResource = useCallback(async () => {
     setIsLoading(true);
@@ -46,5 +47,17 @@ export function ItemView(props: ItemViewProps) {
     return <CircularProgress />;
   }
 
-  return <JsonViewer object={resource} />;
+  return (
+    <>
+      <Tabs
+        value={itemViewTabIndex}
+        onChange={(_, index) => setItemViewTabIndex(index)}
+        aria-label="basic tabs example"
+      >
+        <Tab label="Resource" />
+      </Tabs>
+
+      {itemViewTabIndex === 0 && <JsonViewer object={resource} />}
+    </>
+  );
 }

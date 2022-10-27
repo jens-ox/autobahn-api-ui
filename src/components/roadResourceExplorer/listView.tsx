@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { some } from "lodash";
 
-import "@fontsource/courier-prime";
+import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -9,7 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-import { JsonViewer } from "../jsonViewer/jsonViewer";
+import { JsonViewer } from "../codeElements/jsonViewer";
 
 interface Resource {
   identifier?: string;
@@ -66,28 +66,32 @@ export function ListView(props: ListViewProps) {
         aria-label="basic tabs example"
       >
         <Tab label="Resources" />
-        <Tab label="Raw Response" />
+        <Tab label="Response" />
       </Tabs>
 
-      {listViewTabIndex === 0 && (
-        <List sx={{ maxHeight: 300, overflow: "auto" }}>
-          {resources?.map((resource, index) => (
-            <ListItemButton
-              key={index}
-              selected={selectedResourceIndex === index}
-              onClick={() => {
-                setSelectedResourceIndex(index);
-                setSelectedResourceId(resource.identifier!);
-              }}
-            >
-              <ListItemText primary={resource.title} />
-            </ListItemButton>
-          ))}
-          {!some(resources) && <ListItemText primary={"No resources found."} />}
-        </List>
-      )}
+      <Box sx={{ maxHeight: 500, overflow: "auto" }}>
+        {listViewTabIndex === 0 && (
+          <List>
+            {resources?.map((resource, index) => (
+              <ListItemButton
+                key={index}
+                selected={selectedResourceIndex === index}
+                onClick={() => {
+                  setSelectedResourceIndex(index);
+                  setSelectedResourceId(resource.identifier!);
+                }}
+              >
+                <ListItemText primary={resource.title} />
+              </ListItemButton>
+            ))}
+            {!some(resources) && (
+              <ListItemText primary={"No resources found."} />
+            )}
+          </List>
+        )}
 
-      {listViewTabIndex === 1 && <JsonViewer object={resources} />}
+        {listViewTabIndex === 1 && <JsonViewer object={resources} />}
+      </Box>
     </>
   );
 }

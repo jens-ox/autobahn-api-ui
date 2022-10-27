@@ -1,8 +1,14 @@
 import "./app.css";
 import { ApiExplorer } from "./components/apiExplorer/apiExplorer";
+import { MenuBar } from "./components/menuBar/menuBar";
 
 function App() {
-  return <ApiExplorer />;
+  return (
+    <>
+      <MenuBar />
+      <ApiExplorer />
+    </>
+  );
 }
 
 export default App;

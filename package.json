@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "codegen": "rm -rf src/apis/autobahn && npx @openapitools/openapi-generator-cli generate -i https://autobahn.api.bund.dev/openapi.yaml -g typescript-fetch -o src/apis/autobahn/generated"
+    "codegen": "rm -rf src/apis/autobahn/generated && npx @openapitools/openapi-generator-cli generate -i https://autobahn.api.bund.dev/openapi.yaml -g typescript-fetch -o src/apis/autobahn/generated"
   },
   "eslintConfig": {
     "extends": [
