@@ -6,6 +6,7 @@ A API Explorer for the [Autobahn API](https://autobahn.api.bund.dev).
 
 - `npm run start` to start a local server for development.
 - `npm run build` to build a production bundle.
+- `npm run codegen` to generate the Autobahn API client types.
 
 ## Deploying
 
