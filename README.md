@@ -21,6 +21,8 @@ There are still some TODOs:
 - Implement robust error handling and display a message helfpul error messages to the user.
 - Implement better logging and telemetry.
 - Implmement localization, particularly the ability to toggle between German and English documentation.
+- Separate Smart vs UI components
+  - The styling and logic is all integrated together right now.
 - Implement integration tests (e.g. with Cypress)
   - And some more unit tests as well
 - Improve the styling, as it's quite clunky as of now.
