@@ -1,6 +1,6 @@
 # autobahn-api-ui
 
-A UI for the Autobahn API
+A API Explorer for the [Autobahn API](https://autobahn.api.bund.dev).
 
 ## Building
 
@@ -13,12 +13,14 @@ Push to the `main` branch to deploy to `https://autobahn-api-ui.vercel.app/` via
 
 ## Implementation Notes
 
-This is a rough implementation of a UI to explore the Autobahn API (links and details of this API can be found in the `<About />` component). There are still some TODOs:
+This is a rough implementation of a UI to explore the Autobahn API.
+
+There are still some TODOs:
 
 - Implement robust error handling and display a message helfpul error messages to the user.
 - Implement better logging and telemetry.
 - Implmement localization, particularly the ability to toggle between German and English documentation.
-- Implement integration tests using (e.g. with Cypress)
+- Implement integration tests (e.g. with Cypress)
   - And some more unit tests as well
 - Improve the styling, as it's quite clunky as of now.
 

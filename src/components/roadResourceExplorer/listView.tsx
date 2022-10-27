@@ -83,7 +83,7 @@ export function ListView(props: ListViewProps) {
                 <ListItemText primary={resource.title} />
               </ListItemButton>
             ))}
-            {resources && resources.length > 0 && (
+            {(!resources || resources.length === 0) && (
               <ListItemText primary={"No resources found."} />
             )}
           </List>
