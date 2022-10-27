@@ -1,4 +1,3 @@
-import "./app.css";
 import { ApiExplorer } from "./components/apiExplorer/apiExplorer";
 import { MenuBar } from "./components/menuBar/menuBar";
 

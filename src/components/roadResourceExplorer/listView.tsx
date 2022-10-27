@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { some } from "lodash";
 
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -84,7 +83,7 @@ export function ListView(props: ListViewProps) {
                 <ListItemText primary={resource.title} />
               </ListItemButton>
             ))}
-            {!some(resources) && (
+            {resources && resources.length > 0 && (
               <ListItemText primary={"No resources found."} />
             )}
           </List>
