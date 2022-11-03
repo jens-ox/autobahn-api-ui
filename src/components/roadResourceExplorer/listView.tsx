@@ -15,7 +15,7 @@ interface Resource {
   title?: string;
 }
 
-export type ListViewProps = {
+type ListViewProps = {
   roadId: string;
   setSelectedResourceId: (resourceId?: string) => void;
   getList: (roadId: string) => Promise<Resource[] | undefined>;

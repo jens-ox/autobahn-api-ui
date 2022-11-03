@@ -10,7 +10,7 @@ interface Resource {
   title?: string;
 }
 
-export type ItemViewProps = {
+type ItemViewProps = {
   resourceId: string;
   getDetail: (resourceId: string) => Promise<Resource | undefined>;
 };

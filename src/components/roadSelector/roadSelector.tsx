@@ -11,7 +11,7 @@ import { autobahnApiClient } from "../../apis/autobahn/client";
 import { Roads } from "../../apis/autobahn/generated";
 import { JsonViewer } from "../codeElements/jsonViewer";
 
-export type RoadSelectorProps = {
+type RoadSelectorProps = {
   setSelectedRoad: (road: string) => void;
   handleNext: () => void;
 };

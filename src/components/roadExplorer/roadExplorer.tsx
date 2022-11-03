@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import { roadResources } from "./constants";
 import { RoadResourceExplorer } from "../roadResourceExplorer/roadResourceExplorer";
 
-export type RoadExplorerProps = {
+type RoadExplorerProps = {
   roadId?: string;
 };
 

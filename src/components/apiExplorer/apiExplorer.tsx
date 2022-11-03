@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTheme } from "@mui/material";
 
 import Box from "@mui/material/Box";
@@ -17,7 +17,7 @@ import { API_BASE_URL } from "../../apis/autobahn/constants";
 
 export function ApiExplorer() {
   const [selectedRoad, setSelectedRoad] = useState<string>();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
 
   const theme = useTheme();
 
@@ -38,26 +38,26 @@ export function ApiExplorer() {
               setActiveStep(0);
             }}
           >
-            {!selectedRoad && "Fetch all roads"}
-            {selectedRoad && `Selected road: ${selectedRoad}`}
+            {selectedRoad
+              ? `Selected road: ${selectedRoad}`
+              : "Fetch all roads"}
           </StepButton>
           <StepContent>
             <Grid container spacing={2} width="100%">
               <Grid xs={6}>
-                <Typography>
+                <Typography paragraph>
                   The road is the base resource for the Autobahn API. We can use
                   the base url directly to fetch all available roads. Select a
                   road to explore the API endpoints available for fetching data
                   related to a road.
                 </Typography>
 
-                <br />
-
                 <Typography
                   style={{
                     fontFamily: "Courier Prime",
                     whiteSpace: "pre-wrap",
                   }}
+                  paragraph
                 >
                   HTTP GET: {API_BASE_URL}
                 </Typography>
